@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rectangular</title>
+</head>
+<body>
+<canvas id="canvas" width="2000" height=" 700" style="border: 1px solid pink"></canvas>
+<br>
+<script>
+    //tao lop hcn
+    function Rectangle(width, height) {
+        this.width = width;
+        this.height = height;
+        this.getWidth = function () {
+            return this.width;
+        }
+        this.getHeight = function () {
+            return this.height;
+        }
+        this.getPerimeter = function () {
+            return 2 * (this.width + this.height);
+        }
+        this.getArea = function () {
+            return this.width * this.height;
+        }
+    }
+
+    // tao obj hcn
+
+    // document.write("Width is " + rectangle.getWidth() + "<br>" + "Height is " + rectangle.getHeight() + "<br>");
+    // document.write("Perimeter is " + rectangle.getPerimeter() + "<br>");
+    // document.write("Area is " + rectangle.getArea());
+
+    // ve canvas hcn
+
+
+    // let w2 = prompt("Input Width");
+    // let h2 = prompt("Input Height");
+    // let x1 = Math.floor(Math.random() * 100);
+    // let y1 = Math.floor(Math.random() * 200);
+    function getRandomHex(){
+        return Math.floor(Math.random()*255);
+    }
+
+    function getRandomColor(){
+        let red = getRandomHex();
+        let green = getRandomHex();
+        let blue = getRandomHex();
+        return "rgb(" + red + "," + blue + "," + green +")";
+    }
+
+    function setRect() {
+        let c = document.getElementById('canvas');
+        let ctx = c.getContext("2d");
+        let w = Math.floor(Math.random() * 100);
+        let h = Math.floor(Math.random() * 100);
+        let x = Math.floor(Math.random() * 1600);
+        let y = Math.floor(Math.random() * 1600);
+        let rectangle = new Rectangle(w, h);
+        let color = getRandomColor();
+        ctx.beginPath();
+        ctx.rect(x, y, w, h);
+        ctx.fillStyle = color;
+        ctx.fill();
+        ctx.stroke();
+        ctx.closePath();
+        // hcn 2
+        // ctx.beginPath();
+        // ctx.rect(x1, y1, w2, h2);
+        // ctx.fillStyle = "black";
+        // ctx.fillRect(x1, y1, w2, h2);
+        // ctx.stroke();
+        // ctx.closePath();
+    }
+    function creatMultiRect(){
+        for(var i = 0; i < 100; i++){
+            setRect();
+        }
+    }
+    creatMultiRect();
+
+
+
+    //move đối tượng
+    // let speed = 10;
+    // function move() {
+    //     x += speed;
+    //     if (x > 400) {
+    //         speed = -speed;
+    //     }
+    //     if (x < 50) {
+    //         speed = -speed;
+    //     }
+    // }
+    //
+    // function run(){
+    //     ctx.clearRect(0,0,canvas.clientWidth,canvas.clientHeight);
+    //    setRect() ;
+    //    move();
+    //    requestAnimationFrame(run);
+    // }
+    // run()
+
+
+</script>
+</body>
+</html>
